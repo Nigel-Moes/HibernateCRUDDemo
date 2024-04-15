@@ -1,6 +1,7 @@
 package com.nigel.HibernateCRUDDemo;
 
 import com.nigel.HibernateCRUDDemo.dao.AppDAO;
+import com.nigel.HibernateCRUDDemo.entity.Course;
 import com.nigel.HibernateCRUDDemo.entity.Instructor;
 import com.nigel.HibernateCRUDDemo.entity.InstructorDetail;
 import org.springframework.boot.CommandLineRunner;
@@ -24,8 +25,37 @@ public class HibernateCrudDemoApplication {
 		// deleteInstructor(appDAO);
 
 		// findInstructorDetail(appDAO);
-		deleteInstructorDetail(appDAO);
+		// deleteInstructorDetail(appDAO);
 
+		createInstructorWithCourses(appDAO);
+	}
+
+	private void createInstructorWithCourses(AppDAO appDAO) {
+		// create the instructor
+		Instructor tempInstructor = new Instructor("Susan", "public", "susan@public.com");
+
+		// create the instructor detail
+		InstructorDetail tempInstructorDetail = new InstructorDetail(
+				"http://www.youtube.com",
+				"Video Games");
+
+		// associate the objects
+		tempInstructor.setInstructorDetail(tempInstructorDetail);
+
+		// create courses
+		Course tempCourse1 = new Course("Spanish");
+		Course tempCourse2 = new Course("Spring Boot");
+
+		// add courses to instructor
+		tempInstructor.add(tempCourse1);
+		tempInstructor.add(tempCourse2);
+
+		// save the instructor
+		System.out.println("Saving instructor: " + tempInstructor);
+		System.out.println("The courses: " + tempInstructor.getCourses());
+		appDAO.save(tempInstructor);
+
+		System.out.println("Done!");
 	}
 
 	private void deleteInstructorDetail(AppDAO appDAO) {
@@ -103,5 +133,4 @@ public class HibernateCrudDemoApplication {
 
 		System.out.println("Done!");
 	}
-
 }
