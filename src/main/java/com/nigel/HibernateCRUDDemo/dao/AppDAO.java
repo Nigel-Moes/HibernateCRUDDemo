@@ -1,7 +1,10 @@
 package com.nigel.HibernateCRUDDemo.dao;
 
+import com.nigel.HibernateCRUDDemo.entity.Course;
 import com.nigel.HibernateCRUDDemo.entity.Instructor;
 import com.nigel.HibernateCRUDDemo.entity.InstructorDetail;
+
+import java.util.List;
 
 public interface AppDAO {
     void save(Instructor theInstructor);
@@ -13,4 +16,16 @@ public interface AppDAO {
     InstructorDetail findInstructorDetailById(int theId);
 
     void deleteInstructorDetailById(int theId);
+
+    List<Course> findCoursesByInstructorId(int theId);
+
+    Instructor findInstructorByIdJoinFetch(int theId);
+
+    void update(Instructor tempInstructor);
+
+    void update(Course tempCourse);
+
+    Course findCourseById(int theId);
+
+    void deleteCourseById(int theId);
 }
