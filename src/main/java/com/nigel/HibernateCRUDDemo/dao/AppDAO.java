@@ -3,6 +3,7 @@ package com.nigel.HibernateCRUDDemo.dao;
 import com.nigel.HibernateCRUDDemo.entity.Course;
 import com.nigel.HibernateCRUDDemo.entity.Instructor;
 import com.nigel.HibernateCRUDDemo.entity.InstructorDetail;
+import com.nigel.HibernateCRUDDemo.entity.Student;
 
 import java.util.List;
 
@@ -32,4 +33,12 @@ public interface AppDAO {
     void save(Course theCourse);
 
     Course findCourseAndReviewsByCourseId(int theId);
+
+    Course findCourseAndStudentsByCourseId(int theId);
+
+    Student findStudentAndCoursesByStudentId(int theId);
+
+    void update(Student tempStudent);
+
+    void deleteStudentById(int theId);
 }

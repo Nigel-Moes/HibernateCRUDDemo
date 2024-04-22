@@ -25,7 +25,6 @@ public class Review {
     }
 
     // define getter/setters
-
     public int getId() {
         return id;
     }
@@ -43,7 +42,6 @@ public class Review {
     }
 
     // define toString
-
     @Override
     public String toString() {
         return "Review{" +
